@@ -343,8 +343,7 @@
           const res = await fetch('https://ntfy.sh/' + encodeURIComponent(ch) + '/json?poll=1&since=24h');
           const raw = await res.text();
           let found = null;
-          for (const line of raw.split('
-')) {
+          for (const line of raw.split(String.fromCharCode(10))) {
             if (!line.trim()) continue;
             try {
               const obj = JSON.parse(line);
